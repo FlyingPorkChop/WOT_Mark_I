@@ -17,7 +17,7 @@ BACKBURNER
 
 */
 
-int main()
+int main() // main comment 1
 {
 	Game game;
 	std::string userInput;
