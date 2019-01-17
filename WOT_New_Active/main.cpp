@@ -17,7 +17,7 @@ BACKBURNER
 
 */
 
-int main() // main comment 4
+int main() // just go the track health values working correctly
 {
 	Game game;
 	std::string userInput;

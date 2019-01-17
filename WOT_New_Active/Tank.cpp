@@ -441,12 +441,18 @@ void Tank::hitEnemy(Tank& otherTank, double impactAngle, std::string tankModule)
 		if (otherTank.getIsPlayerTank()) {
 			otherTank.addNotification("OUR TRACK IS HIT! TRACK HEALTH IS " + std::to_string(otherTank.getTrackHealth()));
 			otherTank.displayAllNotifications();
+
 		}
 		else {
+			
 			this->addNotification("ENEMY TRACK IS HIT! ENEMY TRACK HEALTH IS "
 				+ std::to_string(otherTank.getTrackHealth()));
 			this->displayAllNotifications();
 		}
+		if (otherTank.getTrackIsBroken())
+			otherTank.setTrackHealth(otherTank.getMaxTrackHealth() - 20);
+
+		
 	}
 	else {
 		baseArmorValue = otherTank.getArmorOf(tankModule);
@@ -481,6 +487,7 @@ void Tank::breakTrack() {
 	this->setTrackIsBroken(true);
 	// set secondsUntilMobile to 10
 	this->setSecondsUntilMobile(10);
+	this->setTrackHealth(0);
 
 	if (this->getIsPlayerTank()) {
 		this->addNotification("OUR TRACK IS BROKEN! WE CAN'T MOVE FOR 10 SECONDS!");
@@ -489,6 +496,7 @@ void Tank::breakTrack() {
 	else {
 		//addNotification("ENEMY TRACK IS BROKEN! THEY CAN'T MOVE FOR 10 SECONDS!");
 	}
+
 }
 
 void Tank::displayAllNotifications(Tank& playerT) {
