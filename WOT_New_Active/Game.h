@@ -27,6 +27,7 @@ protected:
 	int numberOfTanks = 2;
 	std::string listOfTanks[2];
 	int playerTankChoiceNumber;
+	int secondsIntoGame = 0;
 
 	std::string userCommandLine;
 

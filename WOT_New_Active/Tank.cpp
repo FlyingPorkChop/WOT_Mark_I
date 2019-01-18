@@ -463,7 +463,8 @@ void Tank::hitEnemy(Tank& otherTank, double impactAngle, std::string tankModule)
 			otherTank.setHealthPoints(otherTank.getHealthPoints() - this->getDamage());
 
 			std::string note = "DIRECT HIT! ENEMY HEALTH AT: " + std::to_string(otherTank.getHealthPoints());
-			std::string note2 = "WE'VE BEEN HIT! OUR HEALTH IS " + std::to_string(otherTank.getHealthPoints());
+			std::string note2 = "THEY HIT OUR " + util::thisToUpperCase(tankModule) + "! " + 
+				"OUR HEALTH IS: " + std::to_string(otherTank.getHealthPoints());
 
 			// If it was the player tank that hit their target, notify the first note
 			if (otherTank.getIsPlayerTank()) {
@@ -475,6 +476,16 @@ void Tank::hitEnemy(Tank& otherTank, double impactAngle, std::string tankModule)
 				this->displayAllNotifications();
 			}
 
+		}
+		else { // the shell bounced
+			if (otherTank.getIsPlayerTank()) {
+				otherTank.addNotification("ENEMY SHELL JUST GRAZED US!");
+				otherTank.displayAllNotifications();
+			}
+			else {
+				this->addNotification("OUR SHELL BOUNCED!");
+				this->displayAllNotifications();
+			}
 		}
 	}
 
@@ -522,7 +533,7 @@ void Tank::displayAllNotifications() {
 		system("CLS");
 		std::cout << std::endl;
 		std::cout << playerNotifications[i] << std::endl;
-		std::this_thread::sleep_for(std::chrono::seconds{ 2 });
+		std::this_thread::sleep_for(std::chrono::seconds{ 3 });
 	}
 
 	system("CLS");

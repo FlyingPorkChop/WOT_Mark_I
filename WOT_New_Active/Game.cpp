@@ -111,7 +111,6 @@ void Game::showPossibleCommands(Tank& playerT) {
 void Game::doCommands(Tank& playerT, Tank& aiT) {
 	while (!gameOver) {
 		while (gameStarted) {
-			int counter = 0;
 			while (!commanding) {
 
 				// assigns the direction the tank is moving and the distance to enemy
@@ -131,7 +130,7 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 
 				playerT.oneSecOfMoving(aiT); // aiTank is passed so the playerTank can see where he is as to not run into him
 
-											 // if the fireTarget is not nothing
+				 // if the fireTarget is not nothing
 				if (playerT.getFireTarget() != "") {
 					playerT.fireAtTarget(aiT);
 				}
@@ -193,21 +192,39 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 					aiT.oneSecOfMoving(playerT);
 				}
 
-				// update the broken track every second
+				// but before we can fire at anything, we have to give the ai tank a fire target
 
-				int rqz = aiT.getSecondsUntilMobile();
+				// possible to make this dry?
+				// if the ai tank's possible targets vector contains the rear, shoot the rear, else front, then sides
+				if (util::vectorContains(aiT.getPossibleTargets(), "rear")) {
+					aiT.setFireTarget("rear");
+				}
+				else if (util::vectorContains(aiT.getPossibleTargets(), "front")) {
+					aiT.setFireTarget("front");
+				}
+				else if (util::vectorContains(aiT.getPossibleTargets(), "side")) {
+					aiT.setFireTarget("side");
+				}
+
+				// if the fireTarget is not nothing, then shoot
+				if (aiT.getFireTarget() != "" && aiT.getXMetersOut() <= 500 && secondsIntoGame > 4) {
+					aiT.fireAtTarget(playerT);
+				}
+
+				if (playerT.getSecondsUntilReloaded() > 0)
+					playerT.setSecondsUntilReloaded(playerT.getSecondsUntilReloaded() - 1);
+
+				// update the broken track every second
 
 				if (aiT.getSecondsUntilMobile() > 0)
 					aiT.setSecondsUntilMobile(aiT.getSecondsUntilMobile() - 1);
-
-				int qqz = aiT.getSecondsUntilMobile();
 
 				if (aiT.getSecondsUntilMobile() <= 0) {
 					aiT.setSecondsUntilMobile(0);
 					aiT.setTrackIsBroken(false);
 				}
 
-
+				//=======================================================================================
 
 				// prints all the info the user sees every second
 				printActiveInfoForUserTank(playerT);
@@ -218,12 +235,13 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 
 				if (notificationsExist) {
 
-
 					if (this->gameOver)
 						exit(0);
 				}
 
 				std::this_thread::sleep_for(std::chrono::seconds{ 1 }); // sleep for one second so the game runs in real time
+
+				secondsIntoGame++;
 
 				if (!commanding) {
 					std::system("cls");

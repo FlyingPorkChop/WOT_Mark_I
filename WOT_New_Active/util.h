@@ -73,6 +73,14 @@ namespace util {
 		return str;
 	}
 
+	inline std::string thisToUpperCase(std::string str) {
+		std::locale loc;
+		for (std::string::size_type i = 0; i < str.length(); ++i) {
+			str[i] = std::toupper(str[i], loc);
+		}
+		return str;
+	}
+
 	// takes a regex and a string. Returns the first match of that regex in the string
 	inline std::string getRegexFromString(std::string gettingThis, std::string enteredString) {
 
