@@ -1,6 +1,7 @@
 #include "Tank.h"
 #include <iostream>
 #include <string>
+#include "util.h"
 
 Tank::Tank(bool isPlayerTank, std::string name, int damage, int pen, int mth) // my question lingers; is there another way to initialize const variables?
 	:
@@ -378,7 +379,7 @@ void Tank::fireAtTarget(Tank& otherTank) {
 	// If the tank is not even reloaded
 	if (!this->getIsLoaded()) {
 		if (this->getIsPlayerTank()) {
-			this->addNotification("RELOADED IN " + std::to_string((int)this->getSecondsUntilReloaded()) + " SECONDS");
+			this->addNotification("RELOADED IN " + std::to_string((int)ceil(this->getSecondsUntilReloaded())) + " SECONDS");
 			this->displayAllNotifications();
 		}
 		this->setFireTarget(""); // might have to have this be exclusively for player tank
@@ -403,8 +404,6 @@ void Tank::fireAtTarget(Tank& otherTank) {
 	if (this->getFireTarget() == "track") {
 		potentialImpactAngle = 90;
 	}
-
-	// now I need to determine if the shell hit, then make a whole tank.hitEnemy();
 
 	double distanceToEnemyTank = this->getXMetersOut();
 	double chanceToMiss;

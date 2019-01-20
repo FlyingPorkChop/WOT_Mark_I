@@ -472,6 +472,12 @@ void Game::printActiveInfoForUserTank(Tank& playerT) {
 	std::cout << playerT.getXMetersOut() << " meters out!" << std::endl;
 	std::cout << "We Are " + playerT.getTurningPrompt() << std::endl;
 	std::cout << "We Are " + playerT.getMovingPrompt() << std::endl; // prints how userTank is moving
+	if (playerT.getSecondsUntilReloaded() > 0) {
+		std::cout << "SECONDS UNTIL RELOADED: " + std::to_string((int)ceil(playerT.getSecondsUntilReloaded())) << std::endl;
+	}
+	else {
+		std::cout << std::endl;
+	}
 
 }
 

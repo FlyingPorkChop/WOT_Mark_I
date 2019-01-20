@@ -143,7 +143,7 @@ namespace util {
 
 	inline double getChanceToMiss(double distanceToTarget, double dispersion, double potentialImpactAngle) {
 
-		double chanceToMiss = (distanceToTarget / 100)*(dispersion / 2.0) + ((90 - potentialImpactAngle) / 130);
+		double chanceToMiss = (distanceToTarget / 200)*(dispersion / 2.0) + ((90 - potentialImpactAngle) / 130);
 		return chanceToMiss;
 	}
 
