@@ -317,7 +317,7 @@ void Tank::oneSecOfTurning() {
 		}
 	}
 	else if (targetTraverseDegree == 0) {
-		this->turningPrompt = "Not turning";
+		this->turningPrompt = "Not Turning";
 
 	}
 }
@@ -376,13 +376,22 @@ void Tank::assignPossibleTargets(Tank& enemyTank) {
 
 void Tank::fireAtTarget(Tank& otherTank) {
 
-	// get the impact angle from our heading and the heading of specific enemy module
+	// If the tank is not even reloaded
+	if (!this->getIsLoaded()) {
+		if (this->getIsPlayerTank()) {
+			this->addNotification("RELOADED IN " + std::to_string((int)this->getSecondsUntilReloaded()) + " SECONDS");
+			this->displayAllNotifications();
+		}
+		this->setFireTarget(""); // might have to have this be exclusively for player tank
+		return;
+	}
 
+	// get the impact angle from our heading and the heading of specific enemy module
 	// if the fire target is not even a possible target
 	if (!util::vectorContains(this->getPossibleTargets(), this->getFireTarget())) {
 		// do an allert that the target module is no longer in sight
 		this->setFireTarget("");
-		return;
+		return; // if we aren't reloaded, I want to exit this whole method
 	}
 
 	double enemyArmorHeading = otherTank.getHeadingAngle();
@@ -418,6 +427,10 @@ void Tank::fireAtTarget(Tank& otherTank) {
 			this->addNotification("WE MISSED");
 			this->displayAllNotifications();
 		}
+		else {
+			otherTank.addNotification("ENEMY SHELL JUST MISSED US");
+			otherTank.displayAllNotifications();
+		}
 
 		this->setFireTarget("");
 	}
@@ -425,6 +438,8 @@ void Tank::fireAtTarget(Tank& otherTank) {
 		this->hitEnemy(otherTank, potentialImpactAngle, this->getFireTarget());
 		this->setFireTarget("");
 	}
+	this->setIsLoaded(false);
+	this->setSecondsUntilReloaded(this->getReloadTime());
 }
 
 void Tank::hitEnemy(Tank& otherTank, double impactAngle, std::string tankModule) {

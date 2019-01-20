@@ -27,15 +27,12 @@ int main() // just go the track health values working correctly
 
 	// create the physical playerTank from their choice
 	Tank playerTank = game.assignTankFromChoice(game.getPlayerTankChoiceNumber(), true); // any way to rewrite this?
-	std::cout << "You chose a " << playerTank.getTankName() << std::endl;
 
 	// create a random tank ai from the leftover tanks the player did not choose (could also change to let them be the same)
 	Tank aiTank = game.createAiTank();
 
 	// initialize the tank battle, don't begin just yet
 	game.initialize1v1AiBattle(&playerTank, &aiTank);
-	std::cout << "The game just got initialized" << std::endl;
-	std::cout << std::endl;
 	game.setIsCommanding(true); // we want commanding to be true at the very start of the game
 
 								// I need to pass both my tank instances into doCommandsForOneSec thread, otherwise, what is the thread 

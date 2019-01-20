@@ -27,7 +27,7 @@ void Game::listAllTanks() {
 void Game::promptTankChoice() {
 
 	std::string playerChoiceString;
-	std::cout << "Hello Commander! Pick a tank" << std::endl;
+	std::cout << "Hello! Pick your tank!" << std::endl;
 
 	try {
 		listAllTanks();
@@ -89,7 +89,7 @@ void Game::showPossibleCommands(Tank& playerT) {
 	std::cout << std::endl;
 	std::cout << "move [forward, backward] / hold position" << std::endl;
 	std::cout << "turn [degrees] [left/right]" << std::endl;
-	std::cout << "fire at enemy [ ";
+	std::cout << "fire at [ ";
 
 	std::vector<std::string> currentPossibleTargets = playerT.getPossibleTargets();
 
@@ -137,6 +137,8 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 
 				if (playerT.getSecondsUntilReloaded() > 0)
 					playerT.setSecondsUntilReloaded(playerT.getSecondsUntilReloaded() - 1);
+				if (playerT.getSecondsUntilReloaded() <= 0)
+					playerT.setIsLoaded(true);
 
 				if (playerT.getSecondsUntilMobile() > 0)
 					playerT.setSecondsUntilMobile(playerT.getSecondsUntilMobile() - 1);
@@ -181,6 +183,7 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 				// I also need to give the ai tank a move direction
 				if (aiT.getXMetersOut() > 100 && !aiT.getTrackIsBroken()) {
 					aiT.setMoveDirection("forward");
+					aiT.setIsMoving(true);
 				}
 				else {
 					aiT.setMoveDirection("");
@@ -206,13 +209,23 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 					aiT.setFireTarget("side");
 				}
 
+				if (secondsIntoGame > 4) {
+
+					int x = 2;
+					// comment
+				}
+				bool z = aiT.getIsLoaded();
+
 				// if the fireTarget is not nothing, then shoot
-				if (aiT.getFireTarget() != "" && aiT.getXMetersOut() <= 500 && secondsIntoGame > 4) {
+				if (aiT.getFireTarget() != "" && aiT.getXMetersOut() <= 500 && secondsIntoGame > 4 && aiT.getIsLoaded()) {
+
 					aiT.fireAtTarget(playerT);
 				}
 
-				if (playerT.getSecondsUntilReloaded() > 0)
-					playerT.setSecondsUntilReloaded(playerT.getSecondsUntilReloaded() - 1);
+				if (aiT.getSecondsUntilReloaded() > 0)
+					aiT.setSecondsUntilReloaded(aiT.getSecondsUntilReloaded() - 1);
+				if (aiT.getSecondsUntilReloaded() <= 0)
+					aiT.setIsLoaded(true);
 
 				// update the broken track every second
 
@@ -393,7 +406,7 @@ void Game::initialize1v1AiBattle(Tank *playerTank, Tank *aiTank) {
 	// Set the poistion on the x, y grid for each tank
 
 	// defaults for non-testing
-	playerTank->setXYPos(500, 600);
+	playerTank->setXYPos(500, 250);
 	aiTank->setXYPos(500, 750);
 
 	// Set the headingAngle and sideFacingAngle for each tank
@@ -454,10 +467,11 @@ void Game::printMap(int playerX, int playerY, int aiX, int aiY) {
 // remember when you start to make the ai tank do stuff, the things printed out here will be the updated values
 // after the PLAYER TANK methods are ran. So you can't have the ai tank do stuff after you every second. He has to go first
 void Game::printActiveInfoForUserTank(Tank& playerT) {
+
 	std::cout << playerT.getDirectionPrompt() << std::endl; // prints direction to enemy tank
 	std::cout << playerT.getXMetersOut() << " meters out!" << std::endl;
-	std::cout << playerT.getTurningPrompt() << std::endl;
-	std::cout << playerT.getMovingPrompt() << std::endl; // prints how userTank is moving
+	std::cout << "We Are " + playerT.getTurningPrompt() << std::endl;
+	std::cout << "We Are " + playerT.getMovingPrompt() << std::endl; // prints how userTank is moving
 
 }
 
