@@ -371,7 +371,6 @@ void Tank::assignPossibleTargets(Tank& enemyTank) {
 	else if (util::vectorContains(this->possibleTargets, "front")) {
 		util::removeThisFromVector(this->possibleTargets, "front");
 	}
-	std::cout << std::endl;
 }
 
 void Tank::fireAtTarget(Tank& otherTank) {

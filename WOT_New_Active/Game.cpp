@@ -71,7 +71,6 @@ Tank Game::assignTankFromChoice(int choiceNumber, bool isPlayerTank) {
 
 // shows stats of a tank given a pointer to the tank
 void Game::showCurrentTankStats(Tank& t) {
-	std::cout << std::endl;
 	std::cout << t.getTankName() << std::endl;
 	std::cout << "Health Points: " << t.getHealthPoints() << std::endl;
 	std::cout << "Ammo Count: " << t.getAmmoCount() << std::endl;
@@ -104,7 +103,6 @@ void Game::showPossibleCommands(Tank& playerT) {
 	}
 	std::cout << std::endl;
 
-	std::cout << std::endl;
 }
 
 // this is it's own thread. It is CONSTANTLY being checked for truth value
@@ -157,6 +155,8 @@ void Game::doCommands(Tank& playerT, Tank& aiT) {
 				// This is now the ai tank section
 				// =======================================================================================
 				// =======================================================================================
+
+				aiT.assignPossibleTargets(playerT);
 
 				//If the track is broken
 				bool xy = aiT.getTrackIsBroken();
@@ -459,7 +459,7 @@ void Game::printMap(int playerX, int playerY, int aiX, int aiY) {
 				std::cout << std::setw(2) << " ";
 			}
 		}
-		std::cout << std::endl;
+		std::cout << std::endl; // needed
 	}
 }
 
