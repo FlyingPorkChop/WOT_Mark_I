@@ -5,7 +5,9 @@
 #include "Tank.h"
 #include "Tiger_II.h"
 #include "T32.h"
+
 #include "util.h"
+
 #include <string>
 #include <iostream>
 #include <thread>

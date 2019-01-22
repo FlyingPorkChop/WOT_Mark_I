@@ -1,6 +1,8 @@
-#include "util.h"
+//#include "util.h" // wtf?
 // If I flip the order of these, there are a shit load of errors
+
 #include "Game.h"
+
 
 Game::Game() {
 	initListOfTanks();

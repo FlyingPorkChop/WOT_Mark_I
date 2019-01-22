@@ -120,6 +120,7 @@
     <ClCompile Include="T32.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="Tiger_II.cpp" />
+    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />

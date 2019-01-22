@@ -1,7 +1,10 @@
+
 #include "Tank.h"
 #include <iostream>
 #include <string>
 #include "util.h"
+
+// util was here
 
 Tank::Tank(bool isPlayerTank, std::string name, int damage, int pen, int mth) // my question lingers; is there another way to initialize const variables?
 	:

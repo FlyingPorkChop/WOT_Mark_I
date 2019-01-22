@@ -1,6 +1,7 @@
 #ifndef UTIL_H
 #define UTIL_H
 #pragma once
+class Game; // MAGIC!
 
 #include <iostream>
 #include <regex>
@@ -10,11 +11,13 @@
 #include <locale>
 #include <iomanip>
 #include <vector>
+
+
 #include <algorithm>
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <time.h> 
-//#include "Game.h"
+//#include "Game.h" // this would create a circular dependency
 
 // remeber, if you arent' going to make a util.cpp file, you need to preface all your defined functions here with inline
 // because otherwise, everywhere you include "util.h" you would be difining each function multiple times
@@ -25,9 +28,7 @@ namespace util {
 
 	inline std::string thisToLowerCase(std::string str);
 
- //    inline void printMockMapScreen(Game& game) {
-	//	//game.printMap(500, 250, 500, 750);
-	//}
+	void printMockMapScreen(Game& game);
 
 	inline void printMockMenu() {
 		std::cout << std::endl;
