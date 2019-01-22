@@ -14,7 +14,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <time.h> 
-#include "Game.h"
+//#include "Game.h"
 
 // remeber, if you arent' going to make a util.cpp file, you need to preface all your defined functions here with inline
 // because otherwise, everywhere you include "util.h" you would be difining each function multiple times
@@ -25,9 +25,9 @@ namespace util {
 
 	inline std::string thisToLowerCase(std::string str);
 
-     inline void printMockMapScreen(Game& game) {
-		//game.printMap(500, 250, 500, 750);
-	}
+ //    inline void printMockMapScreen(Game& game) {
+	//	//game.printMap(500, 250, 500, 750);
+	//}
 
 	inline void printMockMenu() {
 		std::cout << std::endl;

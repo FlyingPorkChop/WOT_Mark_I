@@ -19,7 +19,7 @@ BACKBURNER
 
 */
 
-int main() // just go the track health values working correctly
+int main() // this has been a close call --> need to look more into that redit post
 {
 	Game game;
 	std::string userInput;
