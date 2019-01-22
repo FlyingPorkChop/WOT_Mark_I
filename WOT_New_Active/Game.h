@@ -76,5 +76,7 @@ public:
 	void testForNotifications(Tank& playerT, Tank& aiT);
 	void testForGameOver(Tank& playerT, Tank& aiT);
 
+	void tutorial();
+
 };
 #endif

@@ -1,5 +1,7 @@
-#include "Game.h"
+
 #include "util.h"
+#include "Game.h"
+
 #include <string>
 #include <iostream>
 #include <thread>
@@ -21,6 +23,8 @@ int main() // just go the track health values working correctly
 {
 	Game game;
 	std::string userInput;
+
+	game.tutorial();
 
 	// show the user all the tanks there are and let them choose a tank
 	game.promptTankChoice();

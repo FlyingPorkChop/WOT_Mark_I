@@ -14,13 +14,50 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <time.h> 
+#include "Game.h"
 
 // remeber, if you arent' going to make a util.cpp file, you need to preface all your defined functions here with inline
 // because otherwise, everywhere you include "util.h" you would be difining each function multiple times
 // inline prevents redefinition errors
 
+
 namespace util {
 
+	inline std::string thisToLowerCase(std::string str);
+
+     inline void printMockMapScreen(Game& game) {
+		//game.printMap(500, 250, 500, 750);
+	}
+
+	inline void printMockMenu() {
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << "T32" << std::endl;
+		std::cout << "Health Points: 1550" << std::endl;
+		std::cout << "Ammo Count: 43" << std::endl;
+		std::cout << "Current Heading: 90" << std::endl;
+		std::cout << "Current Speed: 0" << std::endl;
+		std::cout << std::endl;
+		std::cout << "What are your orders?" << std::endl;
+		std::cout << "======================================" << std::endl;
+		std::cout << std::endl;
+		std::cout << "move [forward, backward] / hold poistion" << std::endl;
+		std::cout << "turn [degrees] [left/right]" << std::endl;
+		std::cout << "fire at [turret, front, track]" << std::endl;
+		std::cout << std::endl;
+	}
+
+	inline void waitFor(std::string str) {
+		std::cout << std::endl;
+		std::string userInput;
+		do {
+			std::cout << "Enter " + str + " to continue" << std::endl;
+			
+			std::getline(std::cin, userInput);
+
+		} while (thisToLowerCase(userInput) != thisToLowerCase(str));
+		system("CLS");
+	}
 
 	inline void removeThisFromVector(std::vector<std::string>& v, std::string str) {
 		for (int i = 0; i < v.size(); i++) {

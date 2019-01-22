@@ -1,3 +1,5 @@
+#include "util.h"
+// If I flip the order of these, there are a shit load of errors
 #include "Game.h"
 
 Game::Game() {
@@ -508,6 +510,47 @@ void Game::testForGameOver(Tank& playerT, Tank& aiT) {
 		this->commanding = true;
 		this->gameStarted = false;
 	}
+}
+
+void Game::tutorial() {
+
+	std::string yesOrNo;
+	do {
+		std::cout << "Would you like to run the tutorial? y/n" << std::endl;
+		std::getline(std::cin, yesOrNo);
+	} while (util::thisToLowerCase(yesOrNo) != "y" && util::thisToLowerCase(yesOrNo) != "n");
+	yesOrNo = util::thisToLowerCase(yesOrNo);
+
+	if (yesOrNo == "n")
+		return;
+	system("CLS");
+	
+	std::cout << "Welcome! The game consists of two actions: Pausing time and giving your tank orders,\n and watching the actions of both your and the enemy tank play out one second at a time ";
+		
+	util::waitFor("got it");
+
+	std::cout << "The game will start by asking you for your first command. The command screen looks like this:" << std::endl;
+
+	util::printMockMenu();
+	util::waitFor("got it");
+
+	std::cout << "The top part of this menu shows the current stats of YOUR tank. Rember, while in this menue, game time is paused." << std::endl;
+	util::printMockMenu();
+	util::waitFor("got it");
+
+	std::cout << "The bottom part of this menu is showing you the current available commands to your tank crew. These options can change depending on the position and status of your tank.\n\nFor example, if you are in front of the enemy tank, you won't be able to shoot his rear armor." << std::endl;
+	util::printMockMenu();
+	util::waitFor("got it");
+
+	std::cout << "To give your tank crew a command, type the first word or words followed by one of the options in [ ] brackets or seperated by a slash.\nFor example: move forward" << std::endl;
+	util::printMockMenu();
+	util::waitFor("got it");
+
+	std::cout << "Time to move onto the map screen, where you'll be watching your tank fight the enemy AI with your commands." << std::endl;
+	std::cout << std::endl;
+	std::cout << "This is what the map screen will look like: " << std::endl;
+
+
 }
 
 
