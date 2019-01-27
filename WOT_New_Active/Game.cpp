@@ -527,16 +527,14 @@ void Game::tutorial() {
 		return;
 	system("CLS");
 	
-	std::cout << "Welcome! The game consists of two actions: Pausing time and giving your tank orders,\n and watching the actions of both your and the enemy tank play out one second at a time ";
-		
+	std::cout << "Welcome! The game consists of two actions: Pausing time and giving your tank orders,\nand watching the actions of both your and the enemy tank play out one second at a time.";		
 	util::waitFor("got it");
 
 	std::cout << "The game will start by asking you for your first command. The command screen looks like this:" << std::endl;
-
 	util::printMockMenu();
 	util::waitFor("got it");
 
-	std::cout << "The top part of this menu shows the current stats of YOUR tank. Rember, while in this menue, game time is paused." << std::endl;
+	std::cout << "The top part of this menu shows the current stats of YOUR tank. Remember, while in this menu, game time is paused.\nNote: heading angles are based on the standard unit circle (North would be 90 degrees)" << std::endl;
 	util::printMockMenu();
 	util::waitFor("got it");
 
@@ -551,6 +549,12 @@ void Game::tutorial() {
 	std::cout << "Time to move onto the map screen, where you'll be watching your tank fight the enemy AI with your commands." << std::endl;
 	std::cout << std::endl;
 	std::cout << "This is what the map screen will look like: " << std::endl;
+	util::printMockMapScreen(*this);
+	std::cout << "The * is your tank and the ! is the enemy tank. These icons will move in real time." << std::endl;
+	util::waitFor("got it");
+
+	std::cout << "That's the basics! Good luck." << std::endl;
+	util::waitFor("to battle");
 
 
 }

@@ -52,7 +52,7 @@ namespace util {
 		std::cout << std::endl;
 		std::string userInput;
 		do {
-			std::cout << "Enter " + str + " to continue" << std::endl;
+			std::cout << "Enter '" +  str + "' to continue" << std::endl;
 			
 			std::getline(std::cin, userInput);
 
