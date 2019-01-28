@@ -140,6 +140,7 @@ void Tank::oneSecOfMoving(Tank& otherTank) {
 	if (this->moveDirection == "") {
 		metersPerSec = 0;
 		this->movingPrompt = "Holding Position";
+		this->setIsMoving(false);
 	}
 	else if (this->moveDirection == "backward") {
 		travelAngle = calculateNewDegHeadingGiven(180);
@@ -168,6 +169,8 @@ void Tank::oneSecOfMoving(Tank& otherTank) {
 		if (this->moveDirection != "") {
 			this->movingPrompt = "Moving ";
 			this->movingPrompt += this->moveDirection;
+			if (!this->getTrackIsBroken())// if the move direction isn't nothing, and the track isn't broke, set is moving to true
+				this->setIsMoving(true); // new line newer line
 		}
 	}
 }
@@ -398,7 +401,7 @@ void Tank::fireAtTarget(Tank& otherTank) {
 	}
 
 	double enemyArmorHeading = otherTank.getHeadingAngle();
-	if (this->fireTarget == "front" || this->fireTarget == "rear") {
+	if (this->fireTarget == "front" || this->fireTarget == "rear" || this->fireTarget == "turret") {
 		enemyArmorHeading = otherTank.calculateNewDegHeadingGiven(90);
 	}
 
@@ -418,6 +421,9 @@ void Tank::fireAtTarget(Tank& otherTank) {
 	else
 		chanceToMiss = util::getChanceToMiss(distanceToEnemyTank, this->getStillDispersion(), potentialImpactAngle);
 
+	// do I have to do an srand() here? last time it was 42! // YES! WE NEED an srand i repeat, srand!
+
+	srand(time(0));
 	int oneToOnehundred = util::randomNumXtoY(1, 100);
 
 	double finalChance = 100 * chanceToMiss;

@@ -389,6 +389,7 @@ void Game::setUserFireTarget(std::string commandLine, Tank& playerT) {
 Tank Game::createAiTank() {
 
 	// makes a radom number from 1 to however many tanks are available
+	// I should be seeding the random number generator here, but it doesn't matter considering there is only one other choice for the ai to make
 	int aiTankChoice = util::randomNumXtoY(1, numberOfTanks);
 
 	// if the initial aiTankChoice was already the same as the player's tank choice, reasign it until it's different

@@ -151,6 +151,8 @@ namespace util {
 		return x;
 	}
 
+
+	// make sure to seed the random number generator before you ever use this!!!
 	inline int randomNumXtoY(int x, int y) {
 		int rn = x + (rand() % (y - x + 1));
 		return rn;
