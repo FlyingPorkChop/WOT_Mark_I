@@ -1,11 +1,7 @@
 
 #include "util.h"
 #include "Game.h"
-
-#include <string>
-#include <iostream>
 #include <thread>
-#include <regex>
 
 /* Goals board
 

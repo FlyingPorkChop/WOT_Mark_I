@@ -3,7 +3,6 @@
 
 #include "Game.h"
 
-
 Game::Game() {
 	initListOfTanks();
 }

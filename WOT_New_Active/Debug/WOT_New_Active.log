@@ -2,8 +2,8 @@
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(64): warning C4018: '<': signed/unsigned mismatch
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(74): warning C4018: '<': signed/unsigned mismatch
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(96): warning C4018: '<': signed/unsigned mismatch
-c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\game.cpp(99): warning C4018: '<': signed/unsigned mismatch
-c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\game.cpp(177): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\game.cpp(98): warning C4018: '<': signed/unsigned mismatch
+c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\game.cpp(176): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
   T32.cpp
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(64): warning C4018: '<': signed/unsigned mismatch
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(74): warning C4018: '<': signed/unsigned mismatch
@@ -12,10 +12,10 @@ c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_ne
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(64): warning C4018: '<': signed/unsigned mismatch
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(74): warning C4018: '<': signed/unsigned mismatch
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(96): warning C4018: '<': signed/unsigned mismatch
-c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(216): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(426): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(539): warning C4018: '<': signed/unsigned mismatch
-c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(554): warning C4018: '<': signed/unsigned mismatch
+c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(214): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(424): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(537): warning C4018: '<': signed/unsigned mismatch
+c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\tank.cpp(552): warning C4018: '<': signed/unsigned mismatch
   Tiger_II.cpp
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(64): warning C4018: '<': signed/unsigned mismatch
 c:\users\marcus\documents\c++\personal projects\wot_new_active\wot_mark_i\wot_new_active\util.h(74): warning C4018: '<': signed/unsigned mismatch

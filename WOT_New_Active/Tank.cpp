@@ -1,7 +1,5 @@
 
 #include "Tank.h"
-#include <iostream>
-#include <string>
 #include "util.h"
 
 // util was here
