@@ -528,30 +528,36 @@ void Game::tutorial() {
 	system("CLS");
 	
 	std::cout << "Welcome! The game consists of two actions: Pausing time and giving your tank orders,\nand watching the actions of both your and the enemy tank play out one second at a time.";		
-	util::waitFor("got it");
+	util::waitFor("ok");
 
 	std::cout << "The game will start by asking you for your first command. The command screen looks like this:" << std::endl;
 	util::printMockMenu();
-	util::waitFor("got it");
+	util::waitFor("ok");
 
 	std::cout << "The top part of this menu shows the current stats of YOUR tank. Remember, while in this menu, game time is paused.\nNote: heading angles are based on the standard unit circle (North would be 90 degrees)" << std::endl;
 	util::printMockMenu();
-	util::waitFor("got it");
+	util::waitFor("ok");
 
 	std::cout << "The bottom part of this menu is showing you the current available commands to your tank crew. These options can change depending on the position and status of your tank.\n\nFor example, if you are in front of the enemy tank, you won't be able to shoot his rear armor." << std::endl;
 	util::printMockMenu();
-	util::waitFor("got it");
+	util::waitFor("ok");
 
 	std::cout << "To give your tank crew a command, type the first word or words followed by one of the options in [ ] brackets or seperated by a slash.\nFor example: move forward" << std::endl;
 	util::printMockMenu();
-	util::waitFor("got it");
+	util::waitFor("ok");
 
 	std::cout << "Time to move onto the map screen, where you'll be watching your tank fight the enemy AI with your commands." << std::endl;
 	std::cout << std::endl;
 	std::cout << "This is what the map screen will look like: " << std::endl;
 	util::printMockMapScreen(*this);
 	std::cout << "The * is your tank and the ! is the enemy tank. These icons will move in real time." << std::endl;
-	util::waitFor("got it");
+	util::waitFor("ok");
+
+	std::cout << "While looking at the map screen, type the character 'c' and press enter. This will pause game time and return you to the command screen." << std::endl;
+	util::waitFor("ok");
+
+	std::cout << "Whenever a major event takes place, such as you hitting the enemy tank or vice versa, a notification will appear for a few seconds.\n\nDo not attempt to enter c go to the command screen durring a notification." << std::endl;
+	util::waitFor("ok");
 
 	std::cout << "That's the basics! Good luck." << std::endl;
 	util::waitFor("to battle");
